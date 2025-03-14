@@ -7,16 +7,63 @@ version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven{
+        url 'https://packages.confluent.io/maven/'}
+    jcenter()
 }
 
 dependencies {
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     implementation 'org.apache.kafka:kafka-streams:3.5.0'
-    implementation 'org.slf4j:slf4j-api:2.0.9'
+    //implementation 'org.slf4j:slf4j-api:2.0.9'
     testImplementation 'org.apache.kafka:kafka-streams-test-utils:3.5.0'
+
+    // Testing dependencies
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
+    //testImplementation 'org.springframework.boot:spring-boot-starter-test:3.3.2'
+
+    // https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka-test
+    //testImplementation 'org.springframework.kafka:spring-kafka-test:3.2.2'
+
+
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter
+    //implementation 'org.springframework.boot:spring-boot-starter:3.3.2'
+    testImplementation 'org.apache.logging.log4j:log4j-api:2.19.0'
+    testImplementation 'org.apache.logging.log4j:log4j-core:2.19.0'
+    testImplementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.19.0'
+
+
+    // Spring Kafka for Kafka Streams
+    // https://mvnrepository.com/artifact/org.springframework.kafka/spring-kafka
+    //implementation 'org.springframework.kafka:spring-kafka:3.2.2'
+
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-configuration-processor
+    //implementation 'org.springframework.boot:spring-boot-configuration-processor:3.3.2'
+
+    // https://mvnrepository.com/artifact/io.confluent/confluent-hub-client
+    implementation 'io.confluent:confluent-hub-client:7.7.0'
+
+    //testcontainers kafka
+
+    // https://mvnrepository.com/artifact/org.testcontainers/testcontainers
+    testImplementation "org.testcontainers:kafka:1.20.6"
+
+    testImplementation "org.testcontainers:testcontainers:1.20.6"
+    // https://mvnrepository.com/artifact/org.testcontainers/junit-jupiter
+    testImplementation "org.testcontainers:junit-jupiter:1.20.6"
+
+
+    // For Lombok (if using Lombok annotations like @Slf4j, @RequiredArgsConstructor, etc.)
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    implementation 'org.apache.httpcomponents:httpclient:4.5.14'
+
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
 }
 
 test {
     useJUnitPlatform()
+    //systemProperty 'log4j.configurationFile', 'src/test/resources/log4j2.properties' // or .properties
 }
